@@ -1,0 +1,35 @@
+<h1>All flights</h1>
+
+<%= form_tag(flights_path, method: :get) do %>
+  <div>
+    <h2>Origin:</h2>
+      <%= select_tag(:flight_from, options_for_select(@flight_from_options)) %>
+  </div>
+  <div>
+    <h2>Destination:</h2>
+    <%= select_tag(:flight_to, options_for_select(@flight_to_options)) %>
+  </div>
+  <div>
+    <h2>Date:</h2>
+    <%= select_tag(:flight_date, options_for_select(@flight_date_options)) %>
+  </div>
+  <div>
+    <h2>Number of tickets:</h2>
+    <%= select_tag(:num_tickets, options_for_select(@num_tickets)) %>
+  </div>
+  <%= submit_tag("Search") %>
+<% end %>
+<% if !@flight_search.nil? && !@flight_search.empty?%>
+  <div>
+    <h2>Search results:</h2>
+    <%= form_tag(new_flight_path, method: :get) do %>
+      <ul>
+        <% @flight_search.each do |fl| %>
+        <li><%= fl.id %>  <%= fl.date %>  <%= fl.from_airport.code %> <%= fl.to_airport.code %>  <%= radio_button_tag :id, fl.id %></li>
+        <% end %>
+      </ul>
+      <%= hidden_field_tag(:num_passengers, @n_passengers) %>
+      <%= submit_tag("Select flight") %>
+    <% end %>
+  </div>
+<% end %>  
