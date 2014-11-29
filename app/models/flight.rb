@@ -20,7 +20,7 @@ class Flight < ActiveRecord::Base
       query = query.where(from_airport_id: id_from)
     end
     unless flight_date.blank?
-      query = query.where(date: (Time.parse(flight_date) - 1.day)..(Time.parse(flight_date) + 1.day)) 
+      query = query.where(date: (Time.parse(flight_date))..(Time.parse(flight_date) + 1.day)) 
     end
     query
    # Flight.joins(:from_airport, :to_airport).where(to_airport_id: id_to).where(from_airport_id: id_from)

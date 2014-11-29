@@ -14,3 +14,7 @@ Flight.create(from_airport_id: 1, to_airport_id: 3, date: Time.now)
 Flight.create(from_airport_id: 2, to_airport_id: 4, date: Time.now)
 Flight.create(from_airport_id: 1, to_airport_id: 4, date: Time.now)
 Flight.create(from_airport_id: 1, to_airport_id: 3, date: Time.now)
+Flight.create(from_airport_id: 3, to_airport_id: 4, date: Time.now - 1.day)
+Flight.create(from_airport_id: 3, to_airport_id: 4, date: Time.now)
+Flight.create(from_airport_id: 3, to_airport_id: 4, date: Time.now + 1.day)
+
