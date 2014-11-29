@@ -1,0 +1,20 @@
+<h1>New booking</h1>
+
+<p>Passengers: <%= @p_num %></p>
+
+<p>Flight id: <%= @flight_selected.id %></p>
+<p>Origin Airport: <%= @flight_selected.from_airport.code %></p>
+<p>Destination Airport: <%= @flight_selected.to_airport.code %></p>
+<p>Date: <%= @flight_selected.date %></p>
+
+<%= form_for @new_booking, url: {action: "create"} do |booking_form| %>
+  <%= @passengers.each do |passenger| %>
+    <h3>Passenger: </h3>
+      <%= booking_form.fields_for "passenger[]", passenger do |contact_details_form| %>
+      <p>Name: <%= contact_details_form.text_field :name %></p>
+      <p>Email: <%= contact_details_form.text_field :email %></p>
+      <%= hidden_field_tag(:flight_id, @flight_selected.id) %>
+    <% end %>
+  <% end %>
+  <%= booking_form.submit %>
+<% end %>

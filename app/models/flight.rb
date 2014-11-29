@@ -1,6 +1,8 @@
 class Flight < ActiveRecord::Base
   belongs_to :from_airport, :foreign_key => :from_airport_id, :class_name => "Airport"
   belongs_to :to_airport, :foreign_key => :to_airport_id, :class_name => "Airport"
+  has_many :bookings
+  has_many :passengers, through: :bookings
 
   def self.search(flight_date, from, to)
     #Flight.all.where("from_airport.code = ?", from).where("to_airport.code = ?", to)#where("date = ?", Date.parse(date))

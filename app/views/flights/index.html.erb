@@ -22,7 +22,7 @@
 <% if !@flight_search.nil? && !@flight_search.empty?%>
   <div>
     <h2>Search results:</h2>
-    <%= form_tag(new_flight_path, method: :get) do %>
+    <%= form_tag(new_booking_path, method: :get) do %>
       <ul>
         <% @flight_search.each do |fl| %>
         <li><%= fl.id %>  <%= fl.date %>  <%= fl.from_airport.code %> <%= fl.to_airport.code %>  <%= radio_button_tag :id, fl.id %></li>
