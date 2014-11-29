@@ -10,7 +10,7 @@
 
 <%= form_for @new_booking, url: bookings_path do |booking_form| %>
   <%= hidden_field_tag(:flight_id, @flight_selected.id) %>
-  <% @flight_passengers.each_with_index do |passenger, i| %>
+  <% @new_booking.passengers.each_with_index do |passenger, i| %>
     <h3>Passenger <%= (i + 1).to_s %>:</h3>
     <%= booking_form.fields_for "passenger[]", passenger do |contact_details_form| %>
       <p>Name: <%= contact_details_form.text_field :name %></p>

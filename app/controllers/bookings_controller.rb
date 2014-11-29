@@ -3,18 +3,13 @@ class BookingsController < ApplicationController
   def new
     @p_num = params[:num_passengers]
     @flight_selected = Flight.find(params[:id])
-    @flight_passengers = Array.new(@p_num.to_i, Passenger.new)
     @new_booking = Booking.new
+    (@p_num.to_i).times { @new_booking.passengers.build}
   end
 
   def create
-    array_pass = booking_params[:passenger]
     booking = Booking.new
-    array_pass.each do |p|
-      pass = Passenger.new(p)
-      pass.booking = booking
-      pass.save
-    end
+    booking.passengers.build(booking_params[:passenger])
     flight = Flight.find(params[:flight_id])
     booking.flight = flight
   
