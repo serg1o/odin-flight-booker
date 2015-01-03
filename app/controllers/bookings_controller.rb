@@ -14,6 +14,9 @@ class BookingsController < ApplicationController
     booking.flight = flight
   
     if booking.save
+      booking.passengers.each do |p| 
+        PassengerMailer.thank_you_email(p).deliver!
+      end
       redirect_to booking
     else
       redirect_to root_path

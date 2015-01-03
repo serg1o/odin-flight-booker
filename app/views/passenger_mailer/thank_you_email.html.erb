@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for booking your flight, <%= @passenger.name %></h1>
+    <p>
+      You have successfully booked your flight
+     
+    </p>
+    <h2>Your Flight Details:</h2>
+    <% booking = @passenger.booking %>
+    <h2>Flight number:</h2>
+      <p><%= booking.flight_id %></p>
+    <h2>Origin:</h2>
+      <p><%= booking.flight.from_airport.code %></p>
+    <h2>Destination:</h2>
+      <p><%= booking.flight.to_airport.code %></p>
+    <h2>Date:</h2>
+      <p><%= booking.flight.date %></p>
+
+
+    <p>Thanks for flying with us and have a nice trip!</p>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+Thank you for booking your flight, <%= @passenger.name %>
+===============================================
+ 
+You have successfully booked your flight
+ 
+ 
+Your Flight Details:
+    <% booking = @passenger.booking %>
+    Flight number: <%= booking.flight_id %>
+    Origin: <%= booking.flight.from_airport.code %>
+    Destination: <%= booking.flight.to_airport.code %>
+    Date: <%= booking.flight.date %>
+
+
+Thanks for flying with us and have a nice trip!
